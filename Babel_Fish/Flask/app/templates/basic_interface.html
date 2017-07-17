@@ -1,0 +1,443 @@
+﻿{% extends "header.html" %}
+{% block body %}
+<body>
+
+    <div style="margin-top:20px;">
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Acompanhamento</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="table-responsive">
+
+                            <div class="col-md-6">
+                                <table class="table table-striped ">
+                                    <thead>
+                                        <tr></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Material</td>
+                                            <td>{{ dv2[0] }}</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Material Comp.</td>
+                                            <td>{{ dv2[1] }}</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Maquinário</td>
+                                            <td>{{ dv2[2] }}</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Bitola</td>
+                                            <td>{{ dv2[3] }}</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Qtd Prevista</td>
+                                            <td>{{ dv2[4] }}</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Finalização</td>
+                                            <td>{{ dv2[5] }}</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Cliente</td>
+                                            <td>{{ dv2[6] }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Descrição Material</td>
+                                            <td>{{ dv2[7] }}</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+                            <div class="col-md-6 ">
+                                <table class="table table-striped ">
+                                    <thead>
+                                        <tr></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Material</td>
+                                            <td>{{ dv2[8] }}</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Material Comp.</td>
+                                            <td>{{ dv2[9] }}</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Maquinário</td>
+                                            <td>{{ dv2[10] }}</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Bitola</td>
+                                            <td>{{ dv2[11] }}</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Qtd Prevista</td>
+                                            <td>{{ dv2[12] }}</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Finalização</td>
+                                            <td>{{ dv2[13] }}</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Cliente</td>
+                                            <td>{{ dv2[14] }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Descrição Material</td>
+                                            <td>{{ dv2[15] }}</td>
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="manutencao_parada" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Manutenção de Paradas:</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <tbody>
+                                                <tr>
+                                                    <td>USUÁRIO</td>
+                                                    <td>{{ parameters['interface']['user'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>ORDEM</td>
+                                                    <td>{{ parameters['interface']['order'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>CT</td>
+                                                    <td>{{ parameters['interface']['ct'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>DESCRIÇÃO</td>
+                                                    <td>{{ parameters['interface']['description'] }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label>Motivo da Parada:</label>
+                                    <form action="" method="POST">
+                                        {{ form2.select(_type="list",style="height:30px;width:250;")}}
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col-lg-6">
+                            </div>
+                            <div class="col-lg-3">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                            </div>
+                            <div class="col-lg-3">
+
+                                <form action="" method="POST" style="width:100px;margin-left:1px;margin-right:1px">
+                                    {{ form2.send(_type="form", class="btn btn-default", style="background-color:#0077AB; color:#ffffff;") }}
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <script type=text/javascript>
+          setInterval(
+            function()
+            {
+               $.getJSON('/_background_process',
+                  function(data)
+                  {
+                    $("#result").text(data.result);
+                    $("#result2").text(data.result2);
+                    $("#result3").text(data.result3);
+                  });
+                return false;
+             },
+            10000);
+        </script>
+
+
+
+
+
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-lg-6">
+
+                    <h1 class="page-header">ORDEM EM PRODUÇÃO/SETUP:</h1>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Características</th>
+                                    <th>Valores</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Ordem de Produção</td>
+                                    <td>{{ dv[0] }}</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Componente</td>
+                                    <td>{{ dv[1] }}</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Descrição Componente</td>
+                                    <td>{{ dv[2] }}</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Compr. Componente</td>
+                                    <td>{{ dv[3] }}</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Lote Componente</td>
+                                    <td>{{ dv[4] }}</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Posição</td>
+                                    <td>{{ dv[5] }}</td>
+
+                                </tr>
+                                <tr>
+                                    <td>OV</td>
+                                    <td>{{ dv[6] }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Item OV</td>
+                                    <td>{{ dv[7] }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Cliente</td>
+                                    <td>{{ dv[8] }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Data Entrega</td>
+                                    <td>{{ dv[9] }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Material</td>
+                                    <td>{{ dv[10] }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Comprimento</td>
+                                    <td>{{ dv[11] }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Lote</td>
+                                    <td>{{ dv[12] }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Quantidade</td>
+                                    <td>{{ dv[13] }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Número de Peças</td>
+                                    <td>{{ dv[14] }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Número de Amarrados</td>
+                                    <td>{{ dv[15] }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+
+                <div class="col-lg-3">
+                    <h1 class="page-header">APLICABILIDADES:</h1>
+
+
+
+                    <form action="" method="POST">
+                        {{ form.btn(_type="button", class="btn btn-primary", style="margin-top: 5px; margin-bottom: 5px; height: 44px; margin-right: 15px; width: 300px; background-color:#0077AB;") }}
+                    </form>
+
+                    <ul class="nav nav-pills" role="tablist">
+                        <a href="/algum_lugar/">
+                            <button type="button" class="btn btn-primary" style="margin-top: 5px; margin-bottom: 5px; height: 44px; margin-right: 15px; width: 300px; background-color:#0077AB;">Finaliza Produção</button>
+                        </a>
+                    </ul>
+
+                    <ul class="nav nav-pills" role="tablist">
+                        <a href="/algum_lugar/">
+                            <button type="button" class="btn btn-primary" style="margin-top: 5px; margin-bottom: 5px; height: 44px; margin-right: 15px; width: 300px; background-color:#0077AB;">Amarrado Extra</button>
+                        </a>
+                    </ul>
+
+                    <ul class="nav nav-pills" role="tablist">
+                        <a href="/algum_lugar/">
+                            <button type="button" class="btn btn-primary" style="margin-top: 5px; margin-bottom: 5px; height: 44px; margin-right: 15px; width: 300px; background-color:#0077AB;">Assumir</button>
+                        </a>
+                    </ul>
+
+                    <ul class="nav nav-pills" role="tablist">
+                        <a href="/algum_lugar/">
+                            <button type="button" class="btn btn-primary" style="margin-top: 5px; margin-bottom: 5px; height: 44px; margin-right: 15px; width: 300px; background-color:#0077AB;">Relatório de Confirmação</button>
+                        </a>
+                    </ul>
+
+                    <ul class="nav nav-pills" role="tablist">
+                        <button type="button" class="btn btn-primary" style="margin-top: 5px; margin-bottom: 5px; height: 44px; margin-right: 15px; width: 300px; background-color:#0077AB;" data-toggle="modal" data-target="#myModal">Acompanhamento</button>
+                    </ul>
+
+                    <ul class="nav nav-pills" role="tablist">
+                        <a href="/algum_lugar/">
+                            <button type="button" class="btn btn-primary" style="margin-top: 5px; margin-bottom: 5px; height: 44px; margin-right: 15px; width: 300px; background-color:#0077AB;">Observação</button>
+                        </a>
+                    </ul>
+
+                    <ul class="nav nav-pills" role="tablist">
+                        <a href="/algum_lugar/">
+                            <button type="button" class="btn btn-primary" style="margin-top: 5px; margin-bottom: 5px; height: 44px; margin-right: 15px; width: 300px; background-color:#0077AB;">Ficha Técnica</button>
+                        </a>
+                    </ul>
+
+                    <ul class="nav nav-pills" role="tablist">
+                        <a href="/algum_lugar/">
+                            <button type="button" class="btn btn-primary" style="margin-top: 5px; margin-bottom: 5px; height: 44px; margin-right: 15px; width: 300px; background-color:#0077AB;">Mapa de Montagem</button>
+                        </a>
+                    </ul>
+
+                    <ul class="nav nav-pills" role="tablist">
+                        <a href="/algum_lugar/">
+                            <button type="button" class="btn btn-primary" style="margin-top: 5px; margin-bottom: 5px; height: 44px; margin-right: 15px; width: 300px; background-color:#0077AB;">Mapa Impeder com Retorno</button>
+                        </a>
+                    </ul>
+
+                    <ul class="nav nav-pills" role="tablist">
+                        <a href="/algum_lugar/">
+                            <button type="button" class="btn btn-primary" style="margin-top: 5px; margin-bottom: 5px; height: 44px; margin-right: 15px; width: 300px; background-color:#0077AB;">RAS</button>
+                        </a>
+                    </ul>
+
+                    <ul class="nav nav-pills" role="tablist">
+                        <button type="button" class="btn btn-primary" style="margin-top: 5px; margin-bottom: 5px; height: 44px; margin-right: 15px; width: 300px; background-color:#0077AB;    " data-toggle="modal" data-target="#manutencao_parada">Manutenção de Parada</button> </a>
+                    </ul>
+
+
+
+
+
+
+                </div>
+
+
+                <div class="col-md-3">
+                    <h1 class="page-header">PRÓXIMOS PEDIDOS:</h1>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nº Pedido</th>
+                                    <th>Ações</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+
+                                    <td>
+                                        <p id="result">{{ response1}}</p>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <a href="#" id="process_input">
+                                                <button class="btn btn-primary">
+                                                    <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td>
+                                        <p id="result2">{{ response2 }}</p>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <a href="#" id="process_input">
+                                            <button class="btn btn-primary">
+                                                <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td>
+                                        <p id="result3">{{ response3 }}</p>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <a href="#" id="process_input">
+                                            <button class="btn btn-primary">
+                                                <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+{% endblock %}
+
