@@ -1,0 +1,158 @@
+﻿{% extends "header.html" %}
+{% block body %}
+
+
+
+<div style="margin-top:50px;">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="table-responsive">
+                    <h1>Acompanhamento:</h1>
+                    <div class="col-md-6">
+                        <table class="table table-striped ">
+                            <thead>
+                                <tr></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Material</td>
+                                    <td>{{ dv2[0] }}</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Material Comp.</td>
+                                    <td>{{ dv2[1] }}</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Maquinário</td>
+                                    <td>{{ dv2[2] }}</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Bitola</td>
+                                    <td>{{ dv2[3] }}</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Qtd Prevista</td>
+                                    <td>{{ dv2[4] }}</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Finalização</td>
+                                    <td>{{ dv2[5] }}</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Cliente</td>
+                                    <td>{{ dv2[6] }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Descrição Material</td>
+                                    <td>{{ dv2[7] }}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                    <div class="col-md-6 ">
+                        <table class="table table-striped ">
+                            <thead>
+                                <tr></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Material</td>
+                                    <td>{{ dv2[8] }}</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Material Comp.</td>
+                                    <td>{{ dv2[9] }}</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Maquinário</td>
+                                    <td>{{ dv2[10] }}</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Bitola</td>
+                                    <td>{{ dv2[11] }}</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Qtd Prevista</td>
+                                    <td>{{ dv2[12] }}</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Finalização</td>
+                                    <td>{{ dv2[13] }}</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Cliente</td>
+                                    <td>{{ dv2[14] }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Descrição Material</td>
+                                    <td>{{ dv2[15] }}</td>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h1 class="text-center" style="margin-bottom:50px;">Status da Balança:</h1>
+                {% if status == '1' %}
+                <button class="btn btn-primary center-block" style="font-size:60pt;background-color:#FFEB3B;color:#000000;width:600px;height:300px;">ESPERANDO...</button>
+                {% endif %}
+                {% if status == '0' %}
+                <button class="btn btn-primary center-block" style="font-size:60pt;background-color:#388E3C;color:#000000;width:600px;height:300px">CAPTURADO</button>
+                {% endif %}
+
+                {% if balance_status == '0' %}
+
+                <p id="demo" class="text-center" style="margin-top:30px;font-size:20pt;"></p>
+
+                <script type="text/javascript">
+
+                        var timer2 = "2:01";
+                        var interval = setInterval(function() {
+
+                          var timer = timer2.split(':');
+                          //by parsing integer, I avoid all extra string processing
+                          var minutes = parseInt(timer[0], 10);
+                          var seconds = parseInt(timer[1], 10);
+                          --seconds;
+                          minutes = (seconds < 0) ? --minutes : minutes;
+                          if (minutes < 0) clearInterval(interval);
+                          seconds = (seconds < 0) ? 59 : seconds;
+                          seconds = (seconds < 10) ? '0' + seconds : seconds;
+                          //minutes = (minutes < 10) ?  minutes : minutes;
+                          $('.countdown').html(minutes + ':' + seconds);
+                          timer2 = minutes + ':' + seconds;
+                        }, 1000);
+                </script>
+
+                
+                <div class="countdown text-center" style="font-size:60pt;"></div>
+
+                {% endif %}
+            </div>
+            <div class="col-md-0">
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

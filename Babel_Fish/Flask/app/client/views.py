@@ -5,13 +5,17 @@ from flask import redirect                                                      
 from flask import url_for                                                                   #Utilizado para pegar app.route da função desejada
 from flask import jsonify                                                                   #Envio de resposta assíncrona para client-side
 from flask import request                                                                   #
+from flask import session
+from functools import wraps
+from flask import flash
 #-------------------------------------------------------------------------------------------#
        
 
 
 #---------------------Import de Funções-----------------------------------------------------#
-from app.client.components.helper import get_parameters                                     #Função para buscar parâmetros do arquivo config.json
-from app.client.interface.basic_interface.interface import login, teste 
+from app.client.components.helper import get_parameters, db_connection                      #Função para buscar parâmetros do arquivo config.json
+from app.client.interface.basic_interface.interface import login 
+from app.client.run.standard_process.start import print_xml
 #-------------------------------------------------------------------------------------------#
 
 
@@ -35,6 +39,22 @@ from app.client.form import Login, Basic_interface, Manutencao_parada
 #\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\#
 
 
+timer = 1
+
+
+
+#---------------------Funções Críticas------------------------------------------------------#
+def login_required(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if 'logged_in' in session:
+            return f(*args, **kwargs)
+        else:
+            return (redirect(url_for('index')))
+    return wrap 
+#-------------------------------------------------------------------------------------------#
+
+
 
 #---------------------Index - LOGIN---------------------------------------------------------#
 @app.route('/', methods=['GET','POST'])
@@ -44,6 +64,8 @@ def index():
     if form.validate_on_submit():
         login_response = login(form.username.data, form.password.data)
         if login_response:
+            session['logged_in'] = True
+            session['username'] = request.form['username']
             return redirect(url_for('basic_interface'))
             
         
@@ -51,8 +73,14 @@ def index():
 #-------------------------------------------------------------------------------------------#
 
 
+
+
 #---------------------BASIC INTERFACE-------------------------------------------------------#
+
+
+
 @app.route('/basic_interface', methods=['GET','POST'])                                      #Roteamento 
+@login_required
 def basic_interface():
     #Temporário
     dv = [123245334234, 21353445656, 'TIRA FQ TUBO SMTH', 0, 2324354634, 0, 183218, 10, 'METALSA CA', '00/00/00', 'Descrição', 6565, 432546546, 1,443, 21, 'MTM 125 05'] #Variáveis teste
@@ -88,6 +116,23 @@ def basic_interface():
 
 
 
+#-------------------------------------------------------------------------------------------#
+@app.route('/industrial_automation/', methods=['GET','POST'])
+def automation_interface():
+    form = Manutencao_parada()
+
+    if form.send.data == True:
+        print("Sendende")
+
+    if form.validate_on_submit():
+        show = form.select.data
+        print(show)
+
+    return render_template('industrial_automation.html', form=form)
+#-------------------------------------------------------------------------------------------#
+
+
+
 #---------------------BACKGROUND PROCESS----------------------------------------------------#
 @app.route('/_background_process')
 def background_process():
@@ -97,11 +142,26 @@ def background_process():
     response2 = parameters['interface']['next_order_1']
     response3 = parameters['interface']['next_order_2']
     return jsonify(result = response1, result2 = response2, result3 = response3)
+
+@app.route('/_timer')
+def timer():
+    global timer
+    parameters = get_parameters()
+    time = parameters['run']['timer']
+    timer = timer + 1
+    return jsonify(time = time, balance_status = parameters['run']['balance_status'])
 #-------------------------------------------------------------------------------------------#
 
 
 
 #---------------------ROTAS PARA TESTE------------------------------------------------------#
+@app.route('/print/')
+def print():
+    response = print_xml()
+    return response
+
+
+
 @app.route('/algum_lugar/')
 def algum_lugar():  
         return "----------------------"
@@ -110,5 +170,19 @@ def algum_lugar():
 @app.route('/header/')
 def header():
     return render_template('header.html')
+
+
+
+@app.route("/viewer/")
+def viewer():
+    dv2 = [20280, 20279, 'F05', 'T25', 1421, 'Pronto', 'METALSA CA', 'TUBO RET S460MC 60 X 100 X 4,00 FQ', 'Stringse', 6860, 0, '00/00/00-13:34', 736542, 0, 20, '21:09:43', 'P'] #Variáveis teste
+
+    parameters = get_parameters()
+    status = parameters['run']['balance_status']
+    timer = parameters['run']['timer']
+    print(status)
+    return render_template('viewer_interface.html', status = status, dv2 = dv2, timer = timer)
 #-------------------------------------------------------------------------------------------#
+
+
 

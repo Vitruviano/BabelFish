@@ -41,6 +41,20 @@
     <Compile Include="app\client\interface\basic_interface\interface.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="app\client\load\components\constants_values_changes.py" />
+    <Compile Include="app\client\load\components\string_handling.py" />
+    <Compile Include="app\client\load\components\sap_communication.py" />
+    <Compile Include="app\client\load\components\hardware_communication.py" />
+    <Compile Include="app\client\load\components\output_processing.py" />
+    <Compile Include="app\client\load\components\math_parser.py" />
+    <Compile Include="app\client\load\components\db_execution.py" />
+    <Compile Include="app\client\load\components\conditions_loops.py" />
+    <Compile Include="app\client\load\components\db_query.py" />
+    <Compile Include="app\client\load\components\print.py" />
+    <Compile Include="app\client\load\components\timer.py" />
+    <Compile Include="app\client\load\components\trigger.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="app\client\run\standard_process\start.py">
       <SubType>Code</SubType>
     </Compile>
@@ -58,6 +72,13 @@
     <Folder Include="app\client\interface\" />
     <Folder Include="app\client\interface\basic_interface\" />
     <Folder Include="app\client\components\" />
+    <Folder Include="app\client\load\" />
+    <Folder Include="app\client\load\global_vars\" />
+    <Folder Include="app\client\load\connections_components\" />
+    <Folder Include="app\client\load\components\" />
+    <Folder Include="app\client\load\memory_tables\" />
+    <Folder Include="app\client\load\db_connections\" />
+    <Folder Include="app\client\load\process_parameters\" />
     <Folder Include="app\client\run\" />
     <Folder Include="app\client\run\standard_process\" />
     <Folder Include="app\static\css\" />
@@ -69,6 +90,8 @@
     <Folder Include="app\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\templates\industrial_automation.html" />
+    <Content Include="app\templates\viewer_interface.html" />
     <Content Include="app\static\config.json" />
     <Content Include="app\static\css\backup_bootstrap\bootstrap-theme.css" />
     <Content Include="app\static\css\backup_bootstrap\bootstrap-theme.css.map" />

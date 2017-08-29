@@ -6,6 +6,7 @@ from wtforms import StringField                                                 
 from wtforms import PasswordField                                                           #Classe para recebimento de senhas
 from wtforms import SelectField
 from wtforms import validators                                                              #Validadores
+from wtforms.validators import DataRequired
 #-------------------------------------------------------------------------------------------#
 
 
@@ -21,6 +22,8 @@ class Basic_interface(FlaskForm):
         
 
 class Manutencao_parada(FlaskForm):
-    select = SelectField('Motivo', choices=[('',''), ('pm','Desarme da Máquina'), ('pm','Desarme da Máquina'), ('pm','Desarme da Máquina')], default='')
+    #select = SelectField('Motivo', choices=[('',''), ('pm','Desarme da Máquina'), ('pm','Desarme da Máquina'), ('pm','Desarme da Máquina')], default='')
+    select = SelectField('Motivo', choices=[('cpp', 'C++'), ('py', 'Python'), ('text', 'Plain Text')], validators=[DataRequired()])
     send = SubmitField('Enviar')
+
 #-------------------------------------------------------------------------------------------#

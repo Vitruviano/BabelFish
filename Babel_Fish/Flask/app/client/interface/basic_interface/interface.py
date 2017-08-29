@@ -4,13 +4,14 @@ from flask import render_template                                               
 from flask import redirect                                                                  #Usado para redirecionar para páginas desejadas
 from flask import url_for                                                                   #Utilizado para pegar app.route da função desejada
 from flask import jsonify                                                                   #Envio de resposta assíncrona para client-side
-from flask import request                                                                   #
+from flask import request           
+from functools import wraps#
 #-------------------------------------------------------------------------------------------#
 
            
 
 #---------------------Import de Funções-----------------------------------------------------#
-from app.client.components.helper import get_parameters 
+from app.client.components.helper import get_parameters, db_connection
 #-------------------------------------------------------------------------------------------#
 
 
@@ -24,15 +25,23 @@ from app.client.components.helper import get_parameters
 
 #----------------------Funções--------------------------------------------------------------#
 def login(username, password):
-    parameters = get_parameters()
-    if username == parameters['interface']['username']:
-        if password == parameters['interface']['password']:
+    '''
+    try:
+        login = [True, username, password]
+        login_response = db_connection(login)
+        if login_response == True:
             return True
-    return False
+        else:
+            return False
+    except Exception as e:
+        print(str(e))
+    '''
+
+    return True
 
 
-def teste(var):                                                                             #Criação da função que será chamada pelo POST do usuário 
-    print(str(var))
+
+
 #-------------------------------------------------------------------------------------------#
 
 

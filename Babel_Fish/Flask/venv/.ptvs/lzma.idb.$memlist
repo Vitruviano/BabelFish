@@ -1,5 +1,5 @@
+FORMAT_ALONE
 FILTER_POWERPC
-FILTER_ARMTHUMB
 io
 open
 TypeError
@@ -11,11 +11,11 @@ _decode_filter_properties
 PRESET_DEFAULT
 FORMAT_AUTO
 MODE_NORMAL
-_encode_filter_properties
+decompress
 bytes
 FILTER_LZMA1
-property
 CHECK_NONE
+property
 isinstance
 MF_BT3
 _MODE_CLOSED
@@ -23,10 +23,10 @@ CHECK_CRC32
 _MODE_READ
 is_check_supported
 MF_HC3
-len
+MF_BT2
 FILTER_DELTA
-FORMAT_ALONE
 CHECK_ID_MAX
+FILTER_ARMTHUMB
 hasattr
 ValueError
 FILTER_LZMA2
@@ -39,8 +39,8 @@ FILTER_X86
 MF_BT4
 str
 LZMADecompressor
+_encode_filter_properties
 PRESET_EXTREME
-decompress
 FORMAT_XZ
 FILTER_SPARC
 os
@@ -51,4 +51,4 @@ CHECK_SHA256
 CHECK_CRC64
 FORMAT_RAW
 LZMAFile
-MF_BT2
+len

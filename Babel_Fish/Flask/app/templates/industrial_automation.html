@@ -1,0 +1,42 @@
+﻿{% extends "header.html" %}
+{% block body %}
+<body>
+    <div class="container-fluid" style="background">
+        <div class="row">
+            <div class="col-lg-4">
+                <h1 class="page-header">AUTOMAÇÃO INDUSTRIAL</h1>
+            </div>
+            <div class="col-lg-4">
+                <div class="col-lg-6">
+                    <label>Motivo da Parada:</label>
+                </div>
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="col-lg-6">
+                    <label>Motivo da Parada:</label>
+                    <form action="" method="POST">
+                        {{ form.select(_type="list",style="height:30px;width:250;")}}
+                    </form>
+                    <form action="" method="POST" style="width:100px;margin-left:1px;margin-right:1px">
+                        {{ form.send(_type="form", class="btn btn-default", style="background-color:#0077AB; color:#ffffff;") }}
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h1 class="page-header" style="font-size:22px">Acompanhamento de Produção</h1>
+            </div>
+            <div class="col-lg-4">
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}
+
+
