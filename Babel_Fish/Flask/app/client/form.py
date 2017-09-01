@@ -20,7 +20,7 @@ class Login(FlaskForm):                                                         
 class Basic_interface(FlaskForm):
         btn = SubmitField('Inicia Produção')                                                #Indicação do tipo de campo do formulário
         
-
+            
 class Manutencao_parada(FlaskForm):
     #select = SelectField('Motivo', choices=[('',''), ('pm','Desarme da Máquina'), ('pm','Desarme da Máquina'), ('pm','Desarme da Máquina')], default='')
     select = SelectField('Motivo', choices=[('cpp', 'C++'), ('py', 'Python'), ('text', 'Plain Text')], validators=[DataRequired()])

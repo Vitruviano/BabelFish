@@ -1,0 +1,145 @@
+{
+  "Process": {
+    "ProcessParams": {
+      "ID": "P1",
+      "Name": "Processo de Exemplo",
+      "StartComponent": "9" 
+    },
+    "GlobalVars": {
+      "GlobalVar": [
+        {
+          "Name": "Peso",
+          "Type": "Integer",
+          "Value": "0"
+        },
+        {
+          "Name": "Altura",
+          "Type": "Integer",
+          "Value": "1.84"
+        }
+      ]
+    },
+    "Connections": {
+      "Connection": {
+        "ID": "1",
+        "Name": "Banco1",
+        "DBType": "MySQL",
+        "ConnectionString": "xxxxxxxxx",
+        "HaveToWork": "1"
+      }
+    },
+    "MemoryTables": {
+      "MemoryTable": {
+        "ID": "4",
+        "Name": "TabelaPrincipal"
+      }
+    },
+    "Components": {
+      "Component": [
+        {
+          "Type": "ProcessBegin",
+          "ID": "2",
+          "Connections": {
+            "Connection": {
+              "ID": "1",
+              "Open": "1"
+            }
+          }
+        },
+        {
+          "Type": "Select",
+          "ID": "3",
+          "Name": "Select 1",
+          "ConnectionID": "1",
+          "Command": "Select IDAmarrado from AutomacaoAmarrados",
+          "MemoryTableID": "4"
+        },
+        {
+          "Type": "TableManipulation",
+          "ID": "5",
+          "Name": "RegistraTabela",
+          "FirstIteration": "Top",
+          "IterationCommand": "Next"
+        },
+        {
+          "Type": "DBCommand",
+          "ID": "6",
+          "Name": "Insert1",
+          "ConnectionID": "1",
+          "Command": "INSERT INTO XP (IDComponent, IDAmarrado, When, User) VALUES (:Insert1.ID, :TabelaPrincipal.IDAmarrado, Now(), :User)"
+        },
+        {
+          "Type": "DBCommand",
+          "ID": "7",
+          "Name": "Insert2",
+          "ConnectionID": "1",
+          "Command": "INSERT INTO Ordem (IDComponent, IDAmarrado, Peso) VALUES (:Insert1.ID, :TabelaPrincipal.IDAmarrado, :Peso)",
+          "Commit": "1"
+        },
+        {
+          "Type": "ProcessEnd",
+          "ID": "8",
+          "Connections": {
+            "Connection": {
+              "ID": "1",
+              "Commit": "1",
+              "Close": "1"
+            }
+          }
+        },
+        {
+          "Type": "Timer",
+          "ID": "9",
+          "Name": "Timer 1",
+          "Timer": "60"
+        }
+      ]
+    },
+    "ComponentConnections": {
+      "ComponentConnection": [
+        {
+          "ID": "1",
+          "ComponentBegin": "2",
+          "ComponentEnd": "3",
+          "Equation": "1=1"
+        },
+        {
+          "ID": "2",
+          "ComponentBegin": "3",
+          "ComponentEnd": "5",
+          "Equation": "Not(:TabelaPrincipal.IsEmpty)"
+        },
+        {
+          "ID": "7",
+          "ComponentBegin": "3",
+          "ComponentEnd": "8",
+          "Equation": "Else()"
+        },
+        {
+          "ID": "5",
+          "ComponentBegin": "5",
+          "ComponentEnd": "6",
+          "Equation": "Not(:TabelaPrincipal.EOF())"
+        },
+        {
+          "ID": "3",
+          "ComponentBegin": "6",
+          "ComponentEnd": "5",
+          "Equation": "1=1"
+        },
+        {
+          "ID": "4",
+          "ComponentBegin": "5",
+          "ComponentEnd": "7",
+          "Equation": "Else()"
+        },
+        {
+          "ID": "6",
+          "ComponentBegin": "7",
+          "ComponentEnd": "8",
+          "Equation": "True"
+        }
+      ]
+    }
+  }
+}

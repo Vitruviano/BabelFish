@@ -16,7 +16,6 @@ def get_parameters():
     return json_readable
 
 
-
 def db_connection(login):
     parameters = get_parameters()
     conn = pymysql.connect(host = parameters['run']['db_host'],

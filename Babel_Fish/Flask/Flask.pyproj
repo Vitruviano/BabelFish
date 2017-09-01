@@ -55,6 +55,12 @@
     <Compile Include="app\client\load\components\trigger.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="app\client\load\global_vars\variables.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="app\client\load\process_parameters\parser.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="app\client\run\standard_process\start.py">
       <SubType>Code</SubType>
     </Compile>
@@ -79,6 +85,7 @@
     <Folder Include="app\client\load\memory_tables\" />
     <Folder Include="app\client\load\db_connections\" />
     <Folder Include="app\client\load\process_parameters\" />
+    <Folder Include="app\client\load\process_parameters\JSON\" />
     <Folder Include="app\client\run\" />
     <Folder Include="app\client\run\standard_process\" />
     <Folder Include="app\static\css\" />
@@ -90,6 +97,7 @@
     <Folder Include="app\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\client\load\process_parameters\JSON\JSON Exemplo.json" />
     <Content Include="app\templates\industrial_automation.html" />
     <Content Include="app\templates\viewer_interface.html" />
     <Content Include="app\static\config.json" />

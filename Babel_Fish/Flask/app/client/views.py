@@ -16,6 +16,7 @@ from flask import flash
 from app.client.components.helper import get_parameters, db_connection                      #Função para buscar parâmetros do arquivo config.json
 from app.client.interface.basic_interface.interface import login 
 from app.client.run.standard_process.start import print_xml
+from app.client.load.global_vars.variables import  teste
 #-------------------------------------------------------------------------------------------#
 
 
@@ -182,6 +183,21 @@ def viewer():
     timer = parameters['run']['timer']
     print(status)
     return render_template('viewer_interface.html', status = status, dv2 = dv2, timer = timer)
+#-------------------------------------------------------------------------------------------#
+
+
+
+#-------------------------------------------------------------------------------------------#
+@app.route("/vars/")
+def vars():
+    value = {}
+    tag = {}
+
+
+    tag, value = teste()
+
+    
+    return "1"
 #-------------------------------------------------------------------------------------------#
 
 
