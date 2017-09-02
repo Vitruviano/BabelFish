@@ -1,6 +1,5 @@
 from app import app
 #---------------------Import----------------------------------------------------------------#
-
 #-------------------------------------------------------------------------------------------#
 
 
@@ -9,58 +8,75 @@ from app import app
 from app.client.load.process_parameters.parser import parse_json
 #-------------------------------------------------------------------------------------------#
 
-#Variavéis Globais:
-#
-#Vão ser variáveis para poder ser escrito/consultado ao longo do processo, Ex: Valor retornado da balança será gravado
-#na GlobalVar Peso (:Peso).
-#Dica do Gustavo: Criar vetor com a primeira posição sendo o nome da variável (Ex: Peso) e a segunda posição o valor (Ex: 0).
-#No momento da preparação de cada componente eu vou poder substituir o nome da variável global pelo seu valor.
-#(Ex: SELECT * FROM BLABLABLA WHERE TF_PESO = :Peso (Substituir pelo valor da variável global) 
-#
-
-#2 - Transformar string em vars
-#3 - Função para varredura
+########################
+#Lembrar de trocar os numeros do json para ints
+#Validar modo Read Write Check
+#Write em aberto
 
 
-def teste():
+global flag
+flag = False
+global vars_dict
+vars_dict = {}
+
+#-------------------------------------------------------------------------------------------#
+def globalvar_parse():
+    global flag
+    global vars_dict
     value = {}
     tag = {}
+    variables = []
+    globalvars_dict = {}
     tag, value = parse_json()
-
-    #print(tag)
-    #print(value)
+    root = "GlobalVars"
     
-    root = "ProcessParams"
-    node = "GlobalVars"
-    matrix = []
-    print((tag[root][node]))
-    for i in range(len(tag[node])):
-        matrix.append([tag[node][i], value[node][i]])
+    for i in range(len(value[root])):
+        variables.append(tag[root][i])
+        variables.append(value[root][i])
+   
+    for i in range(len(variables)):
+        if variables[i] == 'Name':
+            dict_index = str(variables[i+1])
+            globalvars_dict[dict_index] = variables[i+5]
 
-    #print(matrix[1][1])
+    #print(globalvars_dict) #{'Peso': 0, 'Altura': 1.84}
+    flag = True
+    vars_dict = globalvars_dict
+#-------------------------------------------------------------------------------------------#
+
+
+
+#-------------------------------------------------------------------------------------------#
+def text_sweeping(string):
+    global flag
+    global vars_dict
+    if flag == False:
+        globalvar_parse()
+
+    key_word = ''
+    special_char = '%'
+    
+    if type(string) is str:
+        for i in range(len(string)):
+            if string[i] == special_char:
+                for a in range(i, (len(string))):
+                    print(a+1)
+                    print(len(string))
+                    if (string[a] == ' ') or (a+1) == len(string):
+                        new_key_word = key_word
+                        key_word = key_word.replace(special_char, "")
+                        new_string = string
+                        for key in vars_dict:
+                            if str(key) == str(key_word):
+                                new_string = new_string.replace(str(new_key_word),str(vars_dict[key]))
+                        break
+                    key_word += str(string[a])
+    else:
+        return ('Not a String Type')
+
+    print(new_string)
+    
     
 
-    #print(tag[node])
-    #rint(value[node])
-    '''
-    print(matrix[0][0])
-    print(matrix[0][1])
-    print(matrix[1][0])
-    print(matrix[1][1])
-    print(matrix[2][0])
-    print(matrix[2][1])
-    print(matrix[3][0])
-    '''
-    return tag, value
-
-
-
-
-
-
-
-
-
-
-
+#-------------------------------------------------------------------------------------------#
 

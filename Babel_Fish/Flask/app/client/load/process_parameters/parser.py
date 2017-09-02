@@ -163,7 +163,6 @@ def parse_json():
     #print(tag.values())
     #print(value.values())
 
-    #imple FOR
     class Process:
         ID = value["ProcessParams"][0]
         Name = value["ProcessParams"][1]
@@ -172,8 +171,8 @@ def parse_json():
     #print(Process.ID, Process.Name, Process.StartComponent)
 
 
-    print(tag["ProcessParams"][1])
-    print(value["ProcessParams"][1])
+    #print(tag["ProcessParams"][1])
+    #print(value["ProcessParams"][1])
 
     indexjson += 1
 

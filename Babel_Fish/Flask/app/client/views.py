@@ -16,7 +16,7 @@ from flask import flash
 from app.client.components.helper import get_parameters, db_connection                      #Função para buscar parâmetros do arquivo config.json
 from app.client.interface.basic_interface.interface import login 
 from app.client.run.standard_process.start import print_xml
-from app.client.load.global_vars.variables import  teste
+from app.client.load.global_vars.variables import  text_sweeping
 #-------------------------------------------------------------------------------------------#
 
 
@@ -188,14 +188,11 @@ def viewer():
 
 
 #-------------------------------------------------------------------------------------------#
-@app.route("/vars/")
+@app.route("/valar/")
 def vars():
-    value = {}
-    tag = {}
-
-
-    tag, value = teste()
-
+    globalvar_dict = {}
+    string = "a este es  %Peso "
+    text_sweeping(string)
     
     return "1"
 #-------------------------------------------------------------------------------------------#
