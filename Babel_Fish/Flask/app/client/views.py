@@ -17,6 +17,7 @@ from app.client.components.helper import get_parameters, db_connection          
 from app.client.interface.basic_interface.interface import login 
 from app.client.run.standard_process.start import print_xml
 from app.client.load.global_vars.variables import  text_sweeping
+from app.client.load.process_parameters.parser import parse_json
 #-------------------------------------------------------------------------------------------#
 
 
@@ -196,6 +197,10 @@ def vars():
     
     return "1"
 #-------------------------------------------------------------------------------------------#
-
+@app.route("/morghulis/")
+def testa():
+    a,b = parse_json()
+    
+    return "2"
 
 

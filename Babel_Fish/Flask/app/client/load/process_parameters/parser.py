@@ -163,12 +163,17 @@ def parse_json():
     #print(tag.values())
     #print(value.values())
 
-    class Process:
+    bigclass = {}
+    classname = "Process" + str (indexjson)
+
+    class MyClass:
         ID = value["ProcessParams"][0]
         Name = value["ProcessParams"][1]
         StartComponent = value["ProcessParams"][2]
 
-    #print(Process.ID, Process.Name, Process.StartComponent)
+    bigclass[classname] = MyClass()
+
+    print(bigclass[classname].ID, bigclass[classname].Name, bigclass[classname].StartComponent)
 
 
     #print(tag["ProcessParams"][1])
