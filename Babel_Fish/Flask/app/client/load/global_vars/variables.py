@@ -8,9 +8,7 @@ from app import app
 from app.client.load.process_parameters.parser import parse_json
 #-------------------------------------------------------------------------------------------#
 
-########################
-#Lembrar de trocar os numeros do json para ints
-#Validar modo Read Write Check
+
 #Write em aberto
 
 
@@ -50,29 +48,41 @@ def globalvar_parse():
 def text_sweeping(string):
     global flag
     global vars_dict
+
     if flag == False:
         globalvar_parse()
 
     key_word = ''
+    new_string = ''
     special_char = '%'
-    
+    final_string = string
+
     if type(string) is str:
         for i in range(len(string)):
             if string[i] == special_char:
                 for a in range(i, (len(string))):
-                    print(a+1)
-                    print(len(string))
-                    if (string[a] == ' ') or (a+1) == len(string):
+                    if ((string[a] == ' ') or (a+1) == len(string)):
+                        if ((a+1) == len(string)):
+                            key_word += str(string[a])
+                        key_word = key_word.replace(" ", "")
                         new_key_word = key_word
                         key_word = key_word.replace(special_char, "")
-                        new_string = string
+                        new_string = final_string
                         for key in vars_dict:
                             if str(key) == str(key_word):
                                 new_string = new_string.replace(str(new_key_word),str(vars_dict[key]))
-                        break
+                                final_string = new_string
+                        key_word = ''   
                     key_word += str(string[a])
     else:
-        return ('Not a String Type')
+        return False
+
+    
+    for i in range(len(new_string)):
+        if new_string[i] == special_char:
+            print('erro')
+            return False
+
 
     print(new_string)
     

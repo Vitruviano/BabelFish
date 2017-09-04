@@ -190,8 +190,8 @@ def viewer():
 #-------------------------------------------------------------------------------------------#
 @app.route("/valar/")
 def vars():
-    globalvar_dict = {}
-    string = "a este es  %Peso "
+    return_status = globalvar_dict = {}
+    string = "SELECT TOP 3 * FROM %Peso kg %Altura"
     text_sweeping(string)
     
     return "1"
