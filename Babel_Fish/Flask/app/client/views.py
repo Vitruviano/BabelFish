@@ -16,7 +16,10 @@ from flask import flash
 from app.client.components.helper import get_parameters, db_connection                      #Função para buscar parâmetros do arquivo config.json
 from app.client.interface.basic_interface.interface import login 
 from app.client.run.standard_process.start import print_xml
-from app.client.load.global_vars.variables import  text_sweeping
+from app.client.load.global_vars.variables import  read
+from app.client.load.global_vars.variables import  write
+
+from app.client.load.db_connections.connections import connections
 #-------------------------------------------------------------------------------------------#
 
 
@@ -191,9 +194,12 @@ def viewer():
 @app.route("/valar/")
 def vars():
     return_status = globalvar_dict = {}
-    string = "SELECT TOP 3 * FROM %Peso kg %Altura"
-    text_sweeping(string)
+    string = "SELECT TOP 3 * FROM %Peso1 kg %Altura"
+    writes = {'Peso': 31231231, 'Altura': 1.84}
+    write(writes)
     
+    connections()
+
     return "1"
 #-------------------------------------------------------------------------------------------#
 

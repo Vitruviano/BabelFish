@@ -55,7 +55,13 @@
     <Compile Include="app\client\load\components\trigger.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="app\client\load\db_connections\connections.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="app\client\load\global_vars\variables.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="app\client\load\memory_tables\memory.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="app\client\load\process_parameters\parser.py">

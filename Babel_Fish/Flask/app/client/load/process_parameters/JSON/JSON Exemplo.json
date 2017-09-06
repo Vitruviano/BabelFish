@@ -22,9 +22,9 @@
     "Connections": {
       "Connection": {
         "ID": "1",
-        "Name": "Banco1",
+        "Name": "DBTESTE",
         "DBType": "MySQL",
-        "ConnectionString": "xxxxxxxxx",
+        "ConnectionString": "52.67.237.121;gabriel;bti",
         "HaveToWork": 1
       }
     },

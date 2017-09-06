@@ -9,7 +9,8 @@ from app.client.load.process_parameters.parser import parse_json
 #-------------------------------------------------------------------------------------------#
 
 
-#Write em aberto
+
+#Função para chamada
 
 
 global flag
@@ -45,7 +46,7 @@ def globalvar_parse():
 
 
 #-------------------------------------------------------------------------------------------#
-def text_sweeping(string):
+def read(string):
     global flag
     global vars_dict
 
@@ -80,13 +81,54 @@ def text_sweeping(string):
     
     for i in range(len(new_string)):
         if new_string[i] == special_char:
-            print('erro')
+            print('Erro')
             return False
 
 
     print(new_string)
-    
-    
 
 #-------------------------------------------------------------------------------------------#
+
+
+
+#-------------------------------------------------------------------------------------------#
+def write(command):
+    global flag
+    global vars_dict
+    success_count = 0
+    if flag == False:
+        globalvar_parse()
+
+    for key1 in command:
+        for key2 in vars_dict:
+            if str(key1) == str(key2):
+                vars_dict[key2] = command[key1]
+                success_count += 1
+
+    if not (success_count == len(command)):
+        return False
+
+    print(vars_dict)
+#-------------------------------------------------------------------------------------------#
+                
+
+
+
+'''
+import pickle
+obj = [1, 2, 3, 4]
+f = open("/path/to/the/file/where/the/data/should/be/stored.pickle", 'wb') 
+pickle.dump(obj, f)
+f.close()
+'''
+
+
+
+'''
+f = open("/path/to/the/file/where/the/data/should/be/stored.pickle", 'rb')
+obj = pickle.load(f)
+f.close()
+'''
+
+
 
