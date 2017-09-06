@@ -1,5 +1,7 @@
 from app import app
 #---------------------Import----------------------------------------------------------------#
+import pickle
+import os.path
 #-------------------------------------------------------------------------------------------#
 
 
@@ -41,6 +43,11 @@ def globalvar_parse():
     #print(globalvars_dict) #{'Peso': 0, 'Altura': 1.84}
     flag = True
     vars_dict = globalvars_dict
+    file_path = os.path.join((os.path.dirname(os.path.abspath(__file__)) + '/persistence'), 'persistent_data.txt')
+    print(file_path)
+    f = open(file_path, 'wb')
+    pickle.dump(vars_dict, f)
+    f.close()
 #-------------------------------------------------------------------------------------------#
 
 
@@ -113,22 +120,15 @@ def write(command):
                 
 
 
+#-------------------------------------------------------------------------------------------#
+def stored_data():
+    global flag
+    global vars_dict
 
-'''
-import pickle
-obj = [1, 2, 3, 4]
-f = open("/path/to/the/file/where/the/data/should/be/stored.pickle", 'wb') 
-pickle.dump(obj, f)
-f.close()
-'''
+    if flag == False:
+        globalvar_parse()
 
-
-
-'''
-f = open("/path/to/the/file/where/the/data/should/be/stored.pickle", 'rb')
-obj = pickle.load(f)
-f.close()
-'''
-
-
-
+    file_path = os.path.join((os.path.dirname(os.path.abspath(__file__)) + '/persistence'), 'persistent_data.txt')
+    vars_dict = pickle.load(open(file_path, 'rb'))
+    print(vars_dict)
+#-------------------------------------------------------------------------------------------#

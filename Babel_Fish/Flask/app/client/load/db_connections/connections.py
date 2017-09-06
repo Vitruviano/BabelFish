@@ -1,6 +1,7 @@
 from app import app
 #---------------------Import----------------------------------------------------------------#
 import pymysql
+import sqlite3
 #-------------------------------------------------------------------------------------------#
 
 
@@ -89,7 +90,7 @@ def mysql(variables):
                            passwd = passwd,
                            db = db)
         c = conn.cursor()
-        c.execute()
+        c.execute("SELECT * FROM potluck")
         print(c.description)
 
         for row in c:

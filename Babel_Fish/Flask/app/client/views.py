@@ -20,6 +20,7 @@ from app.client.load.global_vars.variables import  read
 from app.client.load.global_vars.variables import  write
 
 from app.client.load.db_connections.connections import connections
+from app.client.load.global_vars.variables import stored_data
 #-------------------------------------------------------------------------------------------#
 
 
@@ -193,11 +194,11 @@ def viewer():
 #-------------------------------------------------------------------------------------------#
 @app.route("/valar/")
 def vars():
-    return_status = globalvar_dict = {}
+    #return_status = globalvar_dict = {}
     string = "SELECT TOP 3 * FROM %Peso1 kg %Altura"
     writes = {'Peso': 31231231, 'Altura': 1.84}
-    write(writes)
-    
+    #write(writes)
+    stored_data()
     connections()
 
     return "1"

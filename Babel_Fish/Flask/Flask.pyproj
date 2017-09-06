@@ -29,12 +29,6 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="app\client\components\helper.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="app\client\components\standard_component.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="app\client\form.py">
       <SubType>Code</SubType>
     </Compile>
@@ -83,11 +77,11 @@
     <Folder Include="app\client\" />
     <Folder Include="app\client\interface\" />
     <Folder Include="app\client\interface\basic_interface\" />
-    <Folder Include="app\client\components\" />
     <Folder Include="app\client\load\" />
     <Folder Include="app\client\load\global_vars\" />
     <Folder Include="app\client\load\connections_components\" />
     <Folder Include="app\client\load\components\" />
+    <Folder Include="app\client\load\global_vars\persistence\" />
     <Folder Include="app\client\load\memory_tables\" />
     <Folder Include="app\client\load\db_connections\" />
     <Folder Include="app\client\load\process_parameters\" />
@@ -103,6 +97,9 @@
     <Folder Include="app\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\client\load\global_vars\persistent_data.txt">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="app\client\load\process_parameters\JSON\JSON Exemplo.json" />
     <Content Include="app\templates\industrial_automation.html" />
     <Content Include="app\templates\viewer_interface.html" />
