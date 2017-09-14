@@ -13,14 +13,15 @@ from flask import flash
 
 
 #---------------------Import de Funções-----------------------------------------------------#
-from app.client.components.helper import get_parameters, db_connection                      #Função para buscar parâmetros do arquivo config.json
-from app.client.interface.basic_interface.interface import login 
-from app.client.run.standard_process.start import print_xml
+#from app.client.components.helper import get_parameters, db_connection                      #Função para buscar parâmetros do arquivo config.json
+#from app.client.interface.basic_interface.interface import login 
+#from app.client.run.standard_process.start import print_xml
 from app.client.load.global_vars.variables import  read
 from app.client.load.global_vars.variables import  write
 
 from app.client.load.db_connections.connections import connections
 from app.client.load.global_vars.variables import stored_data
+from app.client.load.memory_tables.memory import copy_from
 #-------------------------------------------------------------------------------------------#
 
 
@@ -198,8 +199,9 @@ def vars():
     string = "SELECT TOP 3 * FROM %Peso1 kg %Altura"
     writes = {'Peso': 31231231, 'Altura': 1.84}
     #write(writes)
-    stored_data()
-    connections()
+    #stored_data()
+    #connections()
+    copy_from()
 
     return "1"
 #-------------------------------------------------------------------------------------------#

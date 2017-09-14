@@ -100,6 +100,7 @@
     <Content Include="app\client\load\global_vars\persistent_data.txt">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="app\client\load\memory_tables\hello.db" />
     <Content Include="app\client\load\process_parameters\JSON\JSON Exemplo.json" />
     <Content Include="app\templates\industrial_automation.html" />
     <Content Include="app\templates\viewer_interface.html" />
